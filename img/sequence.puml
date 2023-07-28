@@ -1,0 +1,80 @@
+@startuml{sequence.svg}
+
+title 処理の流れ
+
+hide footbox
+
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+' 登場人物
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+actor "利用者(自分)" as user
+
+box "Android端末" #salmon
+	participant "家計簿アプリ" as app #white
+end box
+
+box "PC" #lavender
+	participant "スクリプト" as script
+	participant "ChangeLogMemo" as clmemo
+	participant "CashBook" as cashbook
+	participant "BuyLog" as workdata
+	participant "ChangeLogMemo.txt" as clmemotxt #white
+end box
+
+box "dropbox" #lightblue
+	participant "家計簿データ" as exporteddata
+end box
+
+note over clmemo : ChangeLogメモ
+/note over cashbook : 家計簿アプリのデータ
+/note over workdata : 中間データ
+
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+' シーケンス
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+user -> app ++ : エクスポート操作
+	app -> exporteddata ++ : エクスボート
+	return
+return
+
+...PCとDropBoxの同期を待つ...
+
+
+user -> script ++ : 実行
+
+	script -> cashbook ++ : 家計簿アプリのCSVを読む
+		cashbook -> exporteddata ++ : 読む
+		return 帳簿データ
+	return
+
+	script -> clmemo ++ : ChangeLogメモの情報をロード
+		clmemo -> clmemotxt ++ : 読む
+		return 買い物ログデータ
+	return
+
+	script -> workdata ++ : マージ(買い物ログデータと帳簿データ)
+	return
+
+	script -> clmemo ++ : マージ後のデータを反映
+	return 
+
+	script -> exporteddata ++ : マージ後のデータで上書き
+	return
+
+return
+
+...PCとDropBoxの同期を待つ...
+
+user -> app ++ :インポート
+	app -> exporteddata ++ : 取り込み
+	return
+return
+
+@enduml
+

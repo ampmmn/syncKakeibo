@@ -1,0 +1,29 @@
+@startuml{class.svg}
+
+package "ChangeLogメモ" as ChangeLog <<Database>>
+{
+}
+
+package "かけ～ぼからエクスポートした.csvファイル" as CSVFile <<Database>> 
+{
+}
+
+class CashBook
+class ChangeLogMemo
+class BuyLog
+
+class Item
+
+CashBook ..> CSVFile : 読む / 書く
+ChangeLogMemo ..> ChangeLog : 読む / 書く
+
+CashBook ..> Item : 生成
+ChangeLogMemo ..> Item : 生成
+
+BuyLog o..> Item
+
+
+
+
+@enduml
+

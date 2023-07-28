@@ -1,0 +1,40 @@
+@startuml{overview.svg}
+
+package PC {
+
+card "同期スクリプト" as script
+
+database "ChanngeLogメモ" as clmemo
+
+database "中間データ" as intermadiatedata
+
+}
+
+cloud dropbox {
+
+database "家計簿データ" as kakeibodata
+
+}
+
+
+package Android端末 {
+
+card "家計簿アプリ" as app
+
+}
+actor "使用者(自分)" as user
+
+
+
+user -ri-> app : エクスポート/インポート実行
+app --> kakeibodata : 保存
+
+user --> script : 実行
+
+script --> clmemo : 読む/更新
+script --> kakeibodata : 読む/更新
+
+script --> intermadiatedata : 生成
+
+
+@enduml

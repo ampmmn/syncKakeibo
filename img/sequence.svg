@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="842px" preserveAspectRatio="none" style="width:1083px;height:842px;background:#FFFFFF;" version="1.1" viewBox="0 0 1083 842" width="1083px" zoomAndPan="magnify"><defs><filter height="300%" id="frtym2i1nneub" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="90" x="494" y="30.6855">処理の流れ</text><rect fill="#FA8072" height="786.5547" style="stroke:#A80036;stroke-width:1.0;" width="110" x="121" y="42.6406"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="76" x="138" y="56.1357">Android端末</text><rect fill="#E6E6FA" height="786.5547" style="stroke:#A80036;stroke-width:1.0;" width="732" x="233" y="42.6406"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="18" x="590" y="56.1357">PC</text><rect fill="#ADD8E6" height="786.5547" style="stroke:#A80036;stroke-width:1.0;" width="110" x="967" y="42.6406"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="53" x="995.5" y="56.1357">dropbox</text><rect fill="#FFFFFF" filter="url(#frtym2i1nneub)" height="58.3516" style="stroke:#A80036;stroke-width:1.0;" width="10" x="171" y="198.9531"/><rect fill="#FFFFFF" filter="url(#frtym2i1nneub)" height="58.3516" style="stroke:#A80036;stroke-width:1.0;" width="10" x="171" y="758.8438"/><rect fill="#FFFFFF" filter="url(#frtym2i1nneub)" height="357.1641" style="stroke:#A80036;stroke-width:1.0;" width="10" x="276" y="329.4922"/><rect fill="#FFFFFF" filter="url(#frtym2i1nneub)" height="74.7031" style="stroke:#A80036;stroke-width:1.0;" width="10" x="487" y="464.8984"/><rect fill="#FFFFFF" filter="url(#frtym2i1nneub)" height="14" style="stroke:#A80036;stroke-width:1.0;" width="10" x="487" y="614.3047"/><rect fill="#FFFFFF" filter="url(#frtym2i1nneub)" height="74.7031" style="stroke:#A80036;stroke-width:1.0;" width="10" x="632.5" y="359.8438"/><rect fill="#FFFFFF" filter="url(#frtym2i1nneub)" height="14" style="stroke:#A80036;stroke-width:1.0;" width="10" x="765" y="569.9531"/><rect fill="#FFFFFF" filter="url(#frtym2i1nneub)" height="30.3516" style="stroke:#A80036;stroke-width:1.0;" width="10" x="882" y="495.25"/><rect fill="#FFFFFF" filter="url(#frtym2i1nneub)" height="14" style="stroke:#A80036;stroke-width:1.0;" width="10" x="1017" y="229.3047"/><rect fill="#FFFFFF" filter="url(#frtym2i1nneub)" height="30.3516" style="stroke:#A80036;stroke-width:1.0;" width="10" x="1017" y="390.1953"/><rect fill="#FFFFFF" filter="url(#frtym2i1nneub)" height="14" style="stroke:#A80036;stroke-width:1.0;" width="10" x="1017" y="658.6563"/><rect fill="#FFFFFF" filter="url(#frtym2i1nneub)" height="14" style="stroke:#A80036;stroke-width:1.0;" width="10" x="1017" y="789.1953"/><line style="stroke:#A80036;stroke-width:1.0;" x1="48" x2="48" y1="126.25" y2="265.3047"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:1.0,4.0;" x1="48" x2="48" y1="265.3047" y2="307.1406"/><line style="stroke:#A80036;stroke-width:1.0;" x1="48" x2="48" y1="307.1406" y2="694.6563"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:1.0,4.0;" x1="48" x2="48" y1="694.6563" y2="736.4922"/><line style="stroke:#A80036;stroke-width:1.0;" x1="48" x2="48" y1="736.4922" y2="835.1953"/><line style="stroke:#A80036;stroke-width:1.0;" x1="176" x2="176" y1="126.25" y2="265.3047"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:1.0,4.0;" x1="176" x2="176" y1="265.3047" y2="307.1406"/><line style="stroke:#A80036;stroke-width:1.0;" x1="176" x2="176" y1="307.1406" y2="694.6563"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:1.0,4.0;" x1="176" x2="176" y1="694.6563" y2="736.4922"/><line style="stroke:#A80036;stroke-width:1.0;" x1="176" x2="176" y1="736.4922" y2="835.1953"/><line style="stroke:#A80036;stroke-width:1.0;" x1="281" x2="281" y1="126.25" y2="265.3047"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:1.0,4.0;" x1="281" x2="281" y1="265.3047" y2="307.1406"/><line style="stroke:#A80036;stroke-width:1.0;" x1="281" x2="281" y1="307.1406" y2="694.6563"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:1.0,4.0;" x1="281" x2="281" y1="694.6563" y2="736.4922"/><line style="stroke:#A80036;stroke-width:1.0;" x1="281" x2="281" y1="736.4922" y2="835.1953"/><line style="stroke:#A80036;stroke-width:1.0;" x1="492" x2="492" y1="126.25" y2="265.3047"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:1.0,4.0;" x1="492" x2="492" y1="265.3047" y2="307.1406"/><line style="stroke:#A80036;stroke-width:1.0;" x1="492" x2="492" y1="307.1406" y2="694.6563"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:1.0,4.0;" x1="492" x2="492" y1="694.6563" y2="736.4922"/><line style="stroke:#A80036;stroke-width:1.0;" x1="492" x2="492" y1="736.4922" y2="835.1953"/><line style="stroke:#A80036;stroke-width:1.0;" x1="637" x2="637" y1="126.25" y2="265.3047"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:1.0,4.0;" x1="637" x2="637" y1="265.3047" y2="307.1406"/><line style="stroke:#A80036;stroke-width:1.0;" x1="637" x2="637" y1="307.1406" y2="694.6563"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:1.0,4.0;" x1="637" x2="637" y1="694.6563" y2="736.4922"/><line style="stroke:#A80036;stroke-width:1.0;" x1="637" x2="637" y1="736.4922" y2="835.1953"/><line style="stroke:#A80036;stroke-width:1.0;" x1="770" x2="770" y1="126.25" y2="265.3047"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:1.0,4.0;" x1="770" x2="770" y1="265.3047" y2="307.1406"/><line style="stroke:#A80036;stroke-width:1.0;" x1="770" x2="770" y1="307.1406" y2="694.6563"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:1.0,4.0;" x1="770" x2="770" y1="694.6563" y2="736.4922"/><line style="stroke:#A80036;stroke-width:1.0;" x1="770" x2="770" y1="736.4922" y2="835.1953"/><line style="stroke:#A80036;stroke-width:1.0;" x1="887" x2="887" y1="126.25" y2="265.3047"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:1.0,4.0;" x1="887" x2="887" y1="265.3047" y2="307.1406"/><line style="stroke:#A80036;stroke-width:1.0;" x1="887" x2="887" y1="307.1406" y2="694.6563"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:1.0,4.0;" x1="887" x2="887" y1="694.6563" y2="736.4922"/><line style="stroke:#A80036;stroke-width:1.0;" x1="887" x2="887" y1="736.4922" y2="835.1953"/><line style="stroke:#A80036;stroke-width:1.0;" x1="1022" x2="1022" y1="126.25" y2="265.3047"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:1.0,4.0;" x1="1022" x2="1022" y1="265.3047" y2="307.1406"/><line style="stroke:#A80036;stroke-width:1.0;" x1="1022" x2="1022" y1="307.1406" y2="694.6563"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:1.0,4.0;" x1="1022" x2="1022" y1="694.6563" y2="736.4922"/><line style="stroke:#A80036;stroke-width:1.0;" x1="1022" x2="1022" y1="736.4922" y2="835.1953"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="80" x="5" y="123.1738">利用者(自分)</text><ellipse cx="48" cy="51.6406" fill="#FEFECE" filter="url(#frtym2i1nneub)" rx="8" ry="8" style="stroke:#A80036;stroke-width:2.0;"/><path d="M48,59.6406 L48,86.6406 M35,67.6406 L61,67.6406 M48,86.6406 L35,101.6406 M48,86.6406 L61,101.6406 " fill="none" filter="url(#frtym2i1nneub)" style="stroke:#A80036;stroke-width:2.0;"/><rect fill="#FFFFFF" filter="url(#frtym2i1nneub)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="98" x="125" y="89.6406"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="84" x="132" y="111.1738">家計簿アプリ</text><rect fill="#FEFECE" filter="url(#frtym2i1nneub)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="84" x="237" y="89.6406"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="70" x="244" y="111.1738">スクリプト</text><rect fill="#FEFECE" filter="url(#frtym2i1nneub)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="126" x="427" y="89.6406"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="112" x="434" y="111.1738">ChangeLogMemo</text><rect fill="#FEFECE" filter="url(#frtym2i1nneub)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="79" x="596" y="89.6406"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="65" x="603" y="111.1738">CashBook</text><rect fill="#FEFECE" filter="url(#frtym2i1nneub)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="62" x="737" y="89.6406"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="48" x="744" y="111.1738">BuyLog</text><rect fill="#FFFFFF" filter="url(#frtym2i1nneub)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="144" x="813" y="89.6406"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="130" x="820" y="111.1738">ChangeLogMemo.txt</text><rect fill="#FEFECE" filter="url(#frtym2i1nneub)" height="31.6094" style="stroke:#A80036;stroke-width:1.5;" width="98" x="971" y="89.6406"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="84" x="978" y="111.1738">家計簿データ</text><rect fill="#FFFFFF" filter="url(#frtym2i1nneub)" height="58.3516" style="stroke:#A80036;stroke-width:1.0;" width="10" x="171" y="198.9531"/><rect fill="#FFFFFF" filter="url(#frtym2i1nneub)" height="58.3516" style="stroke:#A80036;stroke-width:1.0;" width="10" x="171" y="758.8438"/><rect fill="#FFFFFF" filter="url(#frtym2i1nneub)" height="357.1641" style="stroke:#A80036;stroke-width:1.0;" width="10" x="276" y="329.4922"/><rect fill="#FFFFFF" filter="url(#frtym2i1nneub)" height="74.7031" style="stroke:#A80036;stroke-width:1.0;" width="10" x="487" y="464.8984"/><rect fill="#FFFFFF" filter="url(#frtym2i1nneub)" height="14" style="stroke:#A80036;stroke-width:1.0;" width="10" x="487" y="614.3047"/><rect fill="#FFFFFF" filter="url(#frtym2i1nneub)" height="74.7031" style="stroke:#A80036;stroke-width:1.0;" width="10" x="632.5" y="359.8438"/><rect fill="#FFFFFF" filter="url(#frtym2i1nneub)" height="14" style="stroke:#A80036;stroke-width:1.0;" width="10" x="765" y="569.9531"/><rect fill="#FFFFFF" filter="url(#frtym2i1nneub)" height="30.3516" style="stroke:#A80036;stroke-width:1.0;" width="10" x="882" y="495.25"/><rect fill="#FFFFFF" filter="url(#frtym2i1nneub)" height="14" style="stroke:#A80036;stroke-width:1.0;" width="10" x="1017" y="229.3047"/><rect fill="#FFFFFF" filter="url(#frtym2i1nneub)" height="30.3516" style="stroke:#A80036;stroke-width:1.0;" width="10" x="1017" y="390.1953"/><rect fill="#FFFFFF" filter="url(#frtym2i1nneub)" height="14" style="stroke:#A80036;stroke-width:1.0;" width="10" x="1017" y="658.6563"/><rect fill="#FFFFFF" filter="url(#frtym2i1nneub)" height="14" style="stroke:#A80036;stroke-width:1.0;" width="10" x="1017" y="789.1953"/><path d="M434,141.25 L434,167.25 L546,167.25 L546,151.25 L536,141.25 L434,141.25 " fill="#FBFB77" filter="url(#frtym2i1nneub)" style="stroke:#A80036;stroke-width:1.0;"/><path d="M536,141.25 L536,151.25 L546,151.25 L536,141.25 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="91" x="440" y="159.7451">ChangeLogメモ</text><path d="M560,141.25 L560,167.25 L711,167.25 L711,151.25 L701,141.25 L560,141.25 " fill="#FBFB77" filter="url(#frtym2i1nneub)" style="stroke:#A80036;stroke-width:1.0;"/><path d="M701,141.25 L701,151.25 L711,151.25 L701,141.25 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="130" x="566" y="159.7451">家計簿アプリのデータ</text><path d="M725,141.25 L725,167.25 L811,167.25 L811,151.25 L801,141.25 L725,141.25 " fill="#FBFB77" filter="url(#frtym2i1nneub)" style="stroke:#A80036;stroke-width:1.0;"/><path d="M801,141.25 L801,151.25 L811,151.25 L801,141.25 " fill="#FBFB77" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="65" x="731" y="159.7451">中間データ</text><polygon fill="#A80036" points="159,194.9531,169,198.9531,159,202.9531,163,198.9531" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="48" x2="165" y1="198.9531" y2="198.9531"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="104" x="55" y="194.0967">エクスポート操作</text><polygon fill="#A80036" points="1005,225.3047,1015,229.3047,1005,233.3047,1009,229.3047" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="181" x2="1011" y1="229.3047" y2="229.3047"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="78" x="188" y="224.4482">エクスボート</text><polygon fill="#A80036" points="192,239.3047,182,243.3047,192,247.3047,188,243.3047" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="186" x2="1021" y1="243.3047" y2="243.3047"/><polygon fill="#A80036" points="59,253.3047,49,257.3047,59,261.3047,55,257.3047" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="53" x2="175" y1="257.3047" y2="257.3047"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="132" x="469" y="290.7236">PCとDropBoxの同期を待つ</text><polygon fill="#A80036" points="264,325.4922,274,329.4922,264,333.4922,268,329.4922" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="48" x2="270" y1="329.4922" y2="329.4922"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="26" x="55" y="324.6357">実行</text><polygon fill="#A80036" points="620.5,355.8438,630.5,359.8438,620.5,363.8438,624.5,359.8438" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="286" x2="626.5" y1="359.8438" y2="359.8438"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="157" x="293" y="354.9873">家計簿アプリのCSVを読む</text><polygon fill="#A80036" points="1005,386.1953,1015,390.1953,1005,394.1953,1009,390.1953" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="642.5" x2="1011" y1="390.1953" y2="390.1953"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="26" x="649.5" y="385.3389">読む</text><polygon fill="#A80036" points="653.5,416.5469,643.5,420.5469,653.5,424.5469,649.5,420.5469" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="647.5" x2="1021" y1="420.5469" y2="420.5469"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="65" x="659.5" y="415.6904">帳簿データ</text><polygon fill="#A80036" points="297,430.5469,287,434.5469,297,438.5469,293,434.5469" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="291" x2="636.5" y1="434.5469" y2="434.5469"/><polygon fill="#A80036" points="475,460.8984,485,464.8984,475,468.8984,479,464.8984" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="286" x2="481" y1="464.8984" y2="464.8984"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="182" x="293" y="460.042">ChangeLogメモの情報をロード</text><polygon fill="#A80036" points="870,491.25,880,495.25,870,499.25,874,495.25" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="497" x2="876" y1="495.25" y2="495.25"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="26" x="504" y="490.3936">読む</text><polygon fill="#A80036" points="508,521.6016,498,525.6016,508,529.6016,504,525.6016" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="502" x2="886" y1="525.6016" y2="525.6016"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="104" x="514" y="520.7451">買い物ログデータ</text><polygon fill="#A80036" points="297,535.6016,287,539.6016,297,543.6016,293,539.6016" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="291" x2="491" y1="539.6016" y2="539.6016"/><polygon fill="#A80036" points="753,565.9531,763,569.9531,753,573.9531,757,569.9531" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="286" x2="759" y1="569.9531" y2="569.9531"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="229" x="293" y="565.0967">マージ(買い物ログデータと帳簿データ)</text><polygon fill="#A80036" points="297,579.9531,287,583.9531,297,587.9531,293,583.9531" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="291" x2="769" y1="583.9531" y2="583.9531"/><polygon fill="#A80036" points="475,610.3047,485,614.3047,475,618.3047,479,614.3047" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="286" x2="481" y1="614.3047" y2="614.3047"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="143" x="293" y="609.4482">マージ後のデータを反映</text><polygon fill="#A80036" points="297,624.3047,287,628.3047,297,632.3047,293,628.3047" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="291" x2="491" y1="628.3047" y2="628.3047"/><polygon fill="#A80036" points="1005,654.6563,1015,658.6563,1005,662.6563,1009,658.6563" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="286" x2="1011" y1="658.6563" y2="658.6563"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="156" x="293" y="653.7998">マージ後のデータで上書き</text><polygon fill="#A80036" points="297,668.6563,287,672.6563,297,676.6563,293,672.6563" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="291" x2="1021" y1="672.6563" y2="672.6563"/><polygon fill="#A80036" points="59,682.6563,49,686.6563,59,690.6563,55,686.6563" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="53" x2="280" y1="686.6563" y2="686.6563"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacing" textLength="132" x="469" y="720.0752">PCとDropBoxの同期を待つ</text><polygon fill="#A80036" points="159,754.8438,169,758.8438,159,762.8438,163,758.8438" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="48" x2="165" y1="758.8438" y2="758.8438"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="65" x="55" y="753.9873">インポート</text><polygon fill="#A80036" points="1005,785.1953,1015,789.1953,1005,793.1953,1009,789.1953" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;" x1="181" x2="1011" y1="789.1953" y2="789.1953"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="52" x="188" y="784.3389">取り込み</text><polygon fill="#A80036" points="192,799.1953,182,803.1953,192,807.1953,188,803.1953" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="186" x2="1021" y1="803.1953" y2="803.1953"/><polygon fill="#A80036" points="59,813.1953,49,817.1953,59,821.1953,55,817.1953" style="stroke:#A80036;stroke-width:1.0;"/><line style="stroke:#A80036;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="53" x2="175" y1="817.1953" y2="817.1953"/><!--MD5=[bbe86a615ea4fab2c3a63ecbe9eb49cb]
+@startuml{sequence.svg}
+
+title 処理の流れ
+
+hide footbox
+
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+' 登場人物
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+actor "利用者(自分)" as user
+
+box "Android端末" #salmon
+	participant "家計簿アプリ" as app #white
+end box
+
+box "PC" #lavender
+	participant "スクリプト" as script
+	participant "ChangeLogMemo" as clmemo
+	participant "CashBook" as cashbook
+	participant "BuyLog" as workdata
+	participant "ChangeLogMemo.txt" as clmemotxt #white
+end box
+
+box "dropbox" #lightblue
+	participant "家計簿データ" as exporteddata
+end box
+
+note over clmemo : ChangeLogメモ
+/note over cashbook : 家計簿アプリのデータ
+/note over workdata : 中間データ
+
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+' シーケンス
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+user -> app ++ : エクスポート操作
+	app -> exporteddata ++ : エクスボート
+	return
+return
+
+...PCとDropBoxの同期を待つ...
+
+
+user -> script ++ : 実行
+
+	script -> cashbook ++ : 家計簿アプリのCSVを読む
+		cashbook -> exporteddata ++ : 読む
+		return 帳簿データ
+	return
+
+	script -> clmemo ++ : ChangeLogメモの情報をロード
+		clmemo -> clmemotxt ++ : 読む
+		return 買い物ログデータ
+	return
+
+	script -> workdata ++ : マージ(買い物ログデータと帳簿データ)
+	return
+
+	script -> clmemo ++ : マージ後のデータを反映
+	return 
+
+	script -> exporteddata ++ : マージ後のデータで上書き
+	return
+
+return
+
+...PCとDropBoxの同期を待つ...
+
+user -> app ++ :インポート
+	app -> exporteddata ++ : 取り込み
+	return
+return
+
+@enduml
+
+@startuml{sequence.svg}
+
+title 処理の流れ
+
+hide footbox
+
+
+actor "利用者(自分)" as user
+
+box "Android端末" #salmon
+	participant "家計簿アプリ" as app #white
+end box
+
+box "PC" #lavender
+	participant "スクリプト" as script
+	participant "ChangeLogMemo" as clmemo
+	participant "CashBook" as cashbook
+	participant "BuyLog" as workdata
+	participant "ChangeLogMemo.txt" as clmemotxt #white
+end box
+
+box "dropbox" #lightblue
+	participant "家計簿データ" as exporteddata
+end box
+
+note over clmemo : ChangeLogメモ
+/note over cashbook : 家計簿アプリのデータ
+/note over workdata : 中間データ
+
+
+user -> app ++ : エクスポート操作
+	app -> exporteddata ++ : エクスボート
+	return
+return
+
+...PCとDropBoxの同期を待つ...
+
+
+user -> script ++ : 実行
+
+	script -> cashbook ++ : 家計簿アプリのCSVを読む
+		cashbook -> exporteddata ++ : 読む
+		return 帳簿データ
+	return
+
+	script -> clmemo ++ : ChangeLogメモの情報をロード
+		clmemo -> clmemotxt ++ : 読む
+		return 買い物ログデータ
+	return
+
+	script -> workdata ++ : マージ(買い物ログデータと帳簿データ)
+	return
+
+	script -> clmemo ++ : マージ後のデータを反映
+	return 
+
+	script -> exporteddata ++ : マージ後のデータで上書き
+	return
+
+return
+
+...PCとDropBoxの同期を待つ...
+
+user -> app ++ :インポート
+	app -> exporteddata ++ : 取り込み
+	return
+return
+
+@enduml
+
+PlantUML version 1.2021.10(Mon Aug 30 22:43:48 JST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: MS932
+Language: ja
+Country: JP
+--></g></svg>
