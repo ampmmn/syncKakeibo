@@ -4,23 +4,32 @@ package "ChangeLogメモ" as ChangeLog <<Database>>
 {
 }
 
-package "かけ～ぼからエクスポートした.csvファイル" as CSVFile <<Database>> 
+package "家計簿アプリからエクスポートした.csvファイル" as CSVFile <<Database>> 
 {
 }
+
+class SyncKakeiboConfig
+
+class ExpenseItem
 
 class CashBook
 class ChangeLogMemo
 class BuyLog
 
-class Item
+class CashItem
+
+ChangeLogMemo ..> SyncKakeiboConfig : 設定ファイルを読む
+
+CashBook ..> ExpenseItem : 費目変換
+CashItem ..> ExpenseItem : 費目変換
 
 CashBook ..> CSVFile : 読む / 書く
 ChangeLogMemo ..> ChangeLog : 読む / 書く
 
-CashBook ..> Item : 生成
-ChangeLogMemo ..> Item : 生成
+CashBook ..> CashItem : 生成
+ChangeLogMemo ..> CashItem : 生成
 
-BuyLog o..> Item
+BuyLog o..> CashItem
 
 
 

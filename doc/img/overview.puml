@@ -6,7 +6,7 @@ card "同期スクリプト" as script
 
 database "ChanngeLogメモ" as clmemo
 
-database "中間データ" as intermadiatedata
+collections "中間データ" as intermadiatedata
 
 }
 
@@ -27,7 +27,7 @@ actor "使用者(自分)" as user
 
 
 user -ri-> app : エクスポート/インポート実行
-app --> kakeibodata : 保存
+app --> kakeibodata : エクスポート/インポート
 
 user --> script : 実行
 
