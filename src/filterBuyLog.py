@@ -16,8 +16,10 @@ class SyncKakeiboConfig:
         config = configparser.ConfigParser();
         config.read(configPath, encoding='utf-8')
 
-        self.mChangeLogMemoFilePath = config["Setting"]["CHANGELOGMEMOFILEPATH"]
-        self.kakeiboDir = config["Setting"]["KAKEIBODIR"]
+        self.mChangeLogMemoFilePath = config["SETTING"]["CHANGELOGMEMOFILEPATH"]
+        self.mKakeiboDir = config["SETTING"]["KAKEIBODIR"]
+        self.mName = config["SETTING"]["NAME"]
+        self.mMailAddress = config["SETTING"]["MAILADDRESS"]
 
     # ChangeLogメモのディレクトリ
     def getChangeLogMemoDir(self):
@@ -29,7 +31,7 @@ class SyncKakeiboConfig:
 
     # 家計簿データ置き場ディレクトリ
     def getKakeiboDir(self):
-        return self.kakeiboDir
+        return self.mKakeiboDir
 
     # cashbook.csvのパス取得
     def getCashBookFilePath(self):
@@ -37,6 +39,12 @@ class SyncKakeiboConfig:
 
     def getCashBookAllFilePath(self):
         return self.getKakeiboDir() + '/cashbook_all.csv'
+
+    def getMailAddress(self):
+        return self.mMailAddress
+
+    def getName(self):
+        return self.mName
 
 # 費目
 class ExpenseItem:
@@ -93,11 +101,11 @@ class ExpenseItem:
     def getIdFromCLMemoName(cls, name):
 
         # 初回呼び出し時にインデックス生成
-        if len(himokuCLMemoToIDMap) == 0:
-            cls.init()
+        if len(cls.himokuCLMemoToIDMap) == 0:
+            cls.initTable()
 
         if name in cls.himokuCLMemoToIDMap:
-            return cls.himokuCLMemoToIDMap(name)
+            return cls.himokuCLMemoToIDMap[name]
         else:
             return -1
 
@@ -106,23 +114,29 @@ class ExpenseItem:
     def getIdFromKakeiboName(cls, name):
 
         # 初回呼び出し時にインデックス生成
-        if len(himokuCBToIDMap) == 0:
-            cls.init()
+        if len(cls.himokuCBToIDMap) == 0:
+            cls.initTable()
 
         if name in cls.himokuCBToIDMap:
-            return cls.himokuCBToIDMap(name)
+            return cls.himokuCBToIDMap[name]
         else:
             return -1
 
     # 費目IDからChangeLogメモ上の費目名を得る
     @classmethod
     def getCLMemoName(cls, himokuId):
-        return cls.idToHimokuCLMap[himokuId]
+        if himokuId in cls.idToHimokuCLMap:
+            return cls.idToHimokuCLMap[himokuId]
+        else:
+            return ""
 
     # 費目IDから家計簿アプリ上の費目名を得る
     @classmethod
     def getKakeiboName(cls, himokuId):
-        return cls.idToHimokuCBMap[himokuId]
+        if himokuId in cls.idToHimokuCBMap:
+            return cls.idToHimokuCBMap[himokuId]
+        else:
+            return ""
 
 class CashItem:
 
@@ -136,6 +150,12 @@ class CashItem:
     def getHimokuId(self):
         return self.mHimokuId
 
+    def getHimokuCLMemoName(self):
+        return ExpenseItem.getCLMemoName(self.mHimokuId)
+
+    def getHimokuKakeiboName(self):
+        return ExpenseItem.getKakeiboName(self.mHimokuId)
+
     # 日付を取得
     def getDate(self):
         return self.mDate
@@ -143,6 +163,19 @@ class CashItem:
     # 金額を取得(正の値:支出  負の値:収入)
     def getAmount(self):
         return self.mAmount
+
+    # 収入の場合に収入金額を正の値で返す(支出の場合0を返す)
+    def getIncomeAmount(self):
+        return -self.mAmount if self.mAmount < 0 else 0
+
+    # 支出の場合に支出金額を正の値で返す(収入の場合0を返す)
+    def getSpendingAmount(self):
+        return self.mAmount if self.mAmount >= 0 else 0
+
+    #
+    def getBalanceCategory(self):
+        return "支出" if self.mAmount >= 0 else "収入"
+
     # メモを取得
     def getBrief(self):
         return self.mBrief
@@ -184,7 +217,7 @@ class CashBook:
                 else:
                     # 2行目以降を読む(1行目はヘッダのため読み飛ばす)
                     date = columns[1]
-                    himokuId = ExpenseItem.getIdFromKakeiboName(column[4])
+                    himokuId = ExpenseItem.getIdFromKakeiboName(columns[4])
 
                     if columns[5] == '支出':
                         amount = int(columns[3])
@@ -198,7 +231,7 @@ class CashBook:
         return True
 
     @classmethod
-    def saveItems(cls, items, filePath):
+    def saveAllItems(cls, items, filePath):
 
         # 元のファイルを.bakに退避
         filePathBak = filePath + ".bak"
@@ -210,12 +243,14 @@ class CashBook:
                              "費目名","収支区分","メモ","帳簿コード","支払コード","請求日&支払回数","請求No","送金元orチャージ"])
             for index,item in enumerate(items):
 
+                himokuName = item.getHimokuKakeiboName()
+
                 columns = [ str(index+1), item.getDate(), item.getIncomeAmount(), item.getSpendingAmount(),
                             himokuName, item.getBalanceCategory(), item.getBrief(),"0","0","","","" ]
-                writer.writerow(item)
+                writer.writerow(columns)
 
     @classmethod
-    def saveAllItems(cls, items, filePath):
+    def saveItems(cls, items, filePath):
 
         # 元のファイルを.bakに退避
         filePathBak = filePath + ".bak"
@@ -231,6 +266,8 @@ class CashBook:
         return self.items
 
 class ChangeLogMemo:
+
+    config = None
 
     def __init__(self):
 
@@ -308,7 +345,10 @@ class ChangeLogMemo:
         # 一時出力用のメモ
         fileOut = open(filePath, "w", encoding='utf-8')
 
-        dateEnd = "29991231"
+        date = ''
+        dateEnd = "99991231"
+
+        outputDateMap = set()
 
         # ChangeLog.txtをよむ
         with open(filePathBak, "r", encoding='utf-8') as f:
@@ -320,100 +360,109 @@ class ChangeLogMemo:
         
                 # 日付行なら日付を取得してスキップ
                 if re.match(r'^\d\d\d\d', line):
-                  date = re.sub(r'^(\d\d\d\d)-(\d\d)-(\d\d).+$', r'\1\2\3', line)
 
-                  # ToDo: 当該日付より新しいログがあれば、それを出力
-                  cls.writeBuyLog(fileOut, buyLog, date, dateEnd)
-                  dateEnd = date
+                    if date != '' and (not date in outputDateMap):
+                        # 別の日付に移ったとき、前行の日付の買い物ログが存在しなかった場合は新規に生成する
+                        cls.writeBuyLogEntry(fileOut, buyLog, date)
+                        outputDateMap.add(date)
 
-                  fileOut.write(line + "\n")
-                  inBuyLog = False
-                  continue
+                    # 次の日付に変更
+                    date = re.sub(r'^(\d\d\d\d)-(\d\d)-(\d\d).+$', r'\1\2\3', line)
+
+                    # 当日と前回出力した日付の間に空白の期間がある場合はそれを補完する
+                    cls.writeBuyLog(fileOut, buyLog, date, dateEnd, outputDateMap)
+                    dateEnd = date
+
+                    # 当日の行を出力する
+                    fileOut.write(line + "\n")
+
+                    inBuyLog = False
+                    continue
 
                 # 買い物ログかどうか
-                if re.match(r'^\t\* 買い物ログ', line):
-                  # 買い物ログ行を出力
-                  fileOut.write(line + "\n")
+                if re.match(r'^\t *\* *買い物ログ *', line):
+                    # 該当する日付の買い物ログを出力
+                    if not date in outputDateMap:
+                        cls.writeBuyLogEntry(fileOut, buyLog, date)
+                        outputDateMap.add(date)
+                    inBuyLog = True
+                    continue
   
-                  # 該当する日付の買い物ログを出力
-                  items = buyLog.getLogAt(date)
-                  for item in items:
-                    if item[1] not in ChangeLogMemo.himokuReverseMap:
-                        print(f"ChangeLogメモ上の不明な費目を検出しました {item[1]}")
-                        print(f"('他'として処理します)")
-                        himoku = ChangeLogMemo.himokuReverseMap["その他"]
-                    else:
-                        himoku = ChangeLogMemo.himokuReverseMap[item[1]]
-                    io = item[2]
-                    amount = int(item[3])
-                    if io == "収入":
-                      amount = -amount
-                    remarks = item[4]
-                    if remarks == "":
-                      remarks = "(記載なし)"
-
-                    fileOut.write(f'\t{himoku} {remarks} {amount}\n')
-
-                  fileOut.write("\n")
-
-                  # 次のエントリか日付が車くる
-                  inBuyLog = True
-                  continue
-
-                #
+                # 別のエントリ
                 if re.match(r'\t\*', line):
-                  inBuyLog = False
+                    inBuyLog = False
 
                 if inBuyLog == False:
-                  fileOut.write(rawline)
+                    fileOut.write(rawline)
 
         fileOut.close()
 
     @classmethod
-    def getConfig(cls, name):
+    def getConfig(cls):
 
-        configPath = os.path.dirname(__file__) + r"\kakeibo.ini"
+        if cls.config == None:
+            cls.config = SyncKakeiboConfig()
 
-        config = configparser.ConfigParser();
-        config.read(configPath, encoding='utf-8')
-
-        return config['SETTING'][name]
+        return cls.config
 
     @classmethod
-    def writeBuyLog(cls, fileOut, buyLog, dateStart, dateEnd):
+    def writeBuyLogEntry(cls, fileOut, buyLog, date):
 
-        NAME = getConfig("NAME")
-        MAILADDRESS = getConfig("MAILADDRESS")
+        # 当日の買い物ログデータを取得する
+        items = buyLog.getLogAt(date)
 
+        if len(items) == 0:
+            return
+
+        warningItems = []
+
+        # ヘッダ行を出力
+        fileOut.write('\t* 買い物ログ:\n')
+
+        # ファイルに出力する
+        for item in items:
+
+            himoku = item.getHimokuCLMemoName()
+            if himoku == '':
+                warningItems.append(item)
+                himoku = "他"
+
+            amount = item.getAmount()
+            remarks = item.getBrief()
+            if remarks == "":
+                remarks = "(記載なし)"
+
+            fileOut.write(f'\t{himoku} {remarks} {amount}\n')
+
+        fileOut.write("\n")
+
+    @classmethod
+    def writeBuyLog(cls, fileOut, buyLog, dateStart, dateEnd, outputDateMap):
+
+        config = cls.getConfig()
+
+        NAME = config.getName()
+        MAILADDRESS = config.getMailAddress()
+
+        warningItems = []
+
+        # 指定した期間(dateStart-dateEnd)のうち、買い物ログデータが存在する日付のリストを取得
+        # (dateStart,dateEnd自身は含まない)
         dates = buyLog.getDateRange(dateStart, dateEnd)
         for date in reversed(dates):
+
+            if date in outputDateMap:
+                # 出力済みの日付
+                continue
 
             # 日付を出力
             datestr = re.sub(r'(\d\d\d\d)(\d\d)(\d\d)', r'\1-\2-\3', date)
             fileOut.write(f'{datestr} {NAME} <{MAILADDRESS}>\n')
             fileOut.write('\n')
-            fileOut.write('\t* 買い物ログ:\n')
   
             # 該当する日付の買い物ログを出力
-            items = buyLog.getLogAt(date)
-            for item in items:
-                if item[1] not in ChangeLogMemo.himokuReverseMap:
-                    print(f"ChangeLogメモ上の不明な費目を検出しました {item[1]}")
-                    print(f"('他'として処理します)")
-                    himoku = ChangeLogMemo.himokuReverseMap["その他"]
-                else:
-                    himoku = ChangeLogMemo.himokuReverseMap[item[1]]
-                io = item[2]
-                amount = int(item[3])
-                if io == "収入":
-                    amount = -amount
-                remarks = item[4]
-                if remarks == "":
-                    remarks = "(記載なし)"
-
-                fileOut.write(f'\t{himoku} {remarks} {amount}\n')
-
-            fileOut.write("\n")
+            cls.writeBuyLogEntry(fileOut, buyLog, date)
+            outputDateMap.add(date)
 
 
 # 買い物ログデータを扱うクラス
@@ -459,7 +508,7 @@ class BuyLog:
       else:
         return []
 
-    # 指定した範囲の日付を取得
+    # 指定した範囲(dateStart,dateEnd)の日付のリストを取得
     def getDateRange(self, dateStart, dateEnd):
 
         result = []
@@ -494,11 +543,13 @@ def main():
         return 1
 
     # かけーぼのCSVを読む
+    print("Loading CSV...")
     cashBook = CashBook()
-    if cashBook.load(conf.getCashBookFilePath()) == False:
+    if cashBook.load(conf.getCashBookAllFilePath()) == False:
         return 1
 
     # ChangeLogファイルパスを取得
+    print("Loading ChangeLogMemo...")
     changeLogMemoFilePath = conf.getChangeLogMemoFilePath()
 
     # ChangeLogメモから買い物ログデータを抽出
@@ -506,17 +557,21 @@ def main():
     buyLogOnMemo.loadBuyLog(changeLogMemoFilePath)
 
     # かけーぼのデータとChangeLogメモの買い物データのマージ
+    print("Merging...")
     buyLog = BuyLog()
     buyLog.append(cashBook.getItems())
     buyLog.append(buyLogOnMemo.getItems())
 
     # マージ後の買い物ログをChangeLogメモに適用する
+    print("Updateing ChangeLogMemo...")
     ChangeLogMemo.applyBuyLog(buyLog, changeLogMemoFilePath)
 
     # マージ後の買い物ログをcashbook.csvに書き出す
     ## cashbook.csv
+    print("Updateing cashbook.csv...")
     CashBook.saveItems(buyLog.getMergedItems(), conf.getCashBookFilePath())
     ## cashbook_all.csv
+    print("Updateing cashbook_all.csv...")
     CashBook.saveAllItems(buyLog.getMergedItems(), conf.getCashBookAllFilePath())
 
 if __name__ == "__main__":
