@@ -5,6 +5,7 @@ import re
 import shutil
 import csv
 import configparser
+import argparse
 
 # 設定ファイルから情報を取得するクラス
 class SyncKakeiboConfig:
@@ -527,7 +528,51 @@ class BuyLog:
     def getMergedItems(self):
       return self.mergedItems
 
-def main():
+class Memo:
+    def __init__(self, memofile):
+        self.items = []
+
+        with open(memofile, "r", encoding='utf-8') as f:
+
+            date = ''
+        
+            for index,rawline in enumerate(f):
+
+                line = rawline.rstrip()
+        
+                # 日付行なら日付を取得
+                if re.match(r'^\d\d\d\d', line):
+
+                    # 次の日付に変更
+                    date = re.sub(r'^(\d\d\d\d)-(\d\d)-(\d\d).*$', r'\1\2\3', line)
+                    continue
+
+                # 買い物ログ
+                if re.match(r'^\t', line):
+
+                    # 費目/品名/金額を抽出
+                    line = line.strip("\t ")
+                    cols = line.split(" ")
+                    if len(cols) != 3:
+                        print("Warning: Line{index+1}: 想定しない形式のため無視します -- {line}")
+                        continue
+
+                    himokuId = ExpenseItem.getIdFromCLMemoName(cols[0])
+                    remarks = cols[1]
+                    amount = int(cols[2])
+
+                    if himokuId == -1:
+                        print(f"Warning: Line.{index+1}: 不明な費目のため無視します -- {himokuId}")
+                        continue
+
+                    self.items.append(CashItem(date, himokuId, amount, remarks))
+                    continue
+
+
+    def getItems(self):
+        return self.items
+
+def syncKakeibo(args):
     conf = SyncKakeiboConfig()
 
     # ChangeLogメモ置き場の有無を確認
@@ -549,8 +594,8 @@ def main():
         return 1
 
     # ChangeLogファイルパスを取得
-    print("Loading ChangeLogMemo...")
     changeLogMemoFilePath = conf.getChangeLogMemoFilePath()
+    print(f"Loading ChangeLogMemo {changeLogMemoFilePath} ...")
 
     # ChangeLogメモから買い物ログデータを抽出
     buyLogOnMemo = ChangeLogMemo()
@@ -573,6 +618,58 @@ def main():
     ## cashbook_all.csv
     print("Updateing cashbook_all.csv...")
     CashBook.saveAllItems(buyLog.getMergedItems(), conf.getCashBookAllFilePath())
+
+def importMemo(args):
+
+    conf = SyncKakeiboConfig()
+
+    # ChangeLogメモ置き場の有無を確認
+    baseDir = conf.getChangeLogMemoDir()
+    if os.path.isdir(baseDir) == False:
+        print(f"Error: ChangeLogメモフォルダ {baseDir} が存在しません")
+        return 1
+
+    # ChangeLogファイルパスを取得
+    changeLogMemoFilePath = conf.getChangeLogMemoFilePath()
+    print(f"Loading ChangeLogMemo {changeLogMemoFilePath} ...")
+
+    # ChangeLogメモから買い物ログデータを抽出
+    buyLogOnMemo = ChangeLogMemo()
+    buyLogOnMemo.loadBuyLog(changeLogMemoFilePath)
+
+    # メモファイルから買い物ログデータを抽出
+    memofilePath = args.memofile
+    print(f"Loading Memo {memofilePath} ...")
+    memo = Memo(memofilePath)
+
+    # メモのデータとChangeLogメモの買い物データのマージ
+    print("Merging...")
+    buyLog = BuyLog()
+    buyLog.append(memo.getItems())
+    buyLog.append(buyLogOnMemo.getItems())
+
+    # マージ後の買い物ログをChangeLogメモに適用する
+    print("Updateing ChangeLogMemo...")
+    ChangeLogMemo.applyBuyLog(buyLog, changeLogMemoFilePath)
+
+# 引数に応じて処理を分ける
+def main():
+    parser = argparse.ArgumentParser(description='個人用ChangeLogメモの買い物ログ回りのユーティリティ')
+    subparsers = parser.add_subparsers()
+    # syncコマンドの定義
+    parser1 = subparsers.add_parser('sync', help='家計簿アプリとの同期を行います')
+    parser1.set_defaults(handler=syncKakeibo)
+
+    # importコマンドの定義
+    parser2 = subparsers.add_parser('import', help='作業用メモをChangeLogメモの買い物リストとして取り込みます')
+    parser2.add_argument('memofile', help='メモファイルのパス')
+    parser2.set_defaults(handler=importMemo)
+
+    args = parser.parse_args()
+    if hasattr(args, 'handler'):
+        args.handler(args)
+    else:
+        parser.print_help()
 
 if __name__ == "__main__":
     try:
