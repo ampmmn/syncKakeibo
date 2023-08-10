@@ -7,6 +7,8 @@ import csv
 import configparser
 import argparse
 
+VERSION=0.2
+
 # 設定ファイルから情報を取得するクラス
 class SyncKakeiboConfig:
 
@@ -219,6 +221,9 @@ class CashBook:
                     # 2行目以降を読む(1行目はヘッダのため読み飛ばす)
                     date = columns[1]
                     himokuId = ExpenseItem.getIdFromKakeiboName(columns[4])
+                    if himokuId == -1:
+                        print(f'Warning: Line.{index+1} [家計簿アプリ側]不明な費目のため無視します {columns[4]}')
+                        continue
 
                     if columns[5] == '支出':
                         amount = int(columns[3])
@@ -324,7 +329,7 @@ class ChangeLogMemo:
                 amount = int(cols[2])
 
                 if himokuId == -1:
-                  print(f"Warning: Line.{index+1}: 不明な費目のため無視します -- {himokuId}")
+                  print(f"Warning: Line.{index+1}: [買い物ログ側]不明な費目のため無視します -- {cols[0]}")
                   continue
 
                 if remarks == "(記載なし)":
@@ -562,7 +567,7 @@ class Memo:
                     amount = int(cols[2])
 
                     if himokuId == -1:
-                        print(f"Warning: Line.{index+1}: 不明な費目のため無視します -- {himokuId}")
+                        print(f"Warning: Line.{index+1}: [メモファイル側]不明な費目のため無視します -- {cols[0]}")
                         continue
 
                     self.items.append(CashItem(date, himokuId, amount, remarks))
