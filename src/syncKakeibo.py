@@ -266,7 +266,7 @@ class CashBook:
         with open(filePath, "w", encoding='utf-8') as f:
             writer = csv.writer(f, delimiter=",", quotechar='"', lineterminator='\n', quoting=csv.QUOTE_MINIMAL)
             writer.writerow(["No","日付","収入","支出","費目名","収支区分","メモ","帳簿コード","支払コード","請求日&支払回数","請求No","送金元orチャージ"])
-            writer.writerow(["9999999","99991231","0","0",f"件数={count}  count={count}","支出","メモ","0","0","","",""])
+            writer.writerow(["9999999","99991231","0","0",f"件数={count}","支出","メモ","0","0","","",""])
 
     def getItems(self):
         return self.items
